@@ -1,0 +1,11 @@
+<section>
+  <h1>Projects</h1>
+
+  <ul>
+    {{#each projects as |project|}}
+      {{project-item project=project}}
+    {{/each}}
+  </ul>
+</section>
+
+{{yield}}
