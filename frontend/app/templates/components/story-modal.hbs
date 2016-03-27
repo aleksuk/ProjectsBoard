@@ -1,0 +1,25 @@
+{{#bs-modal open=showModal body=false footer=false header=false}}
+  {{#bs-modal-header}}
+    <h4 class="modal-title">
+      {{#if story.id}}
+          Update user story
+      {{else}}
+          Add new user story
+      {{/if}}
+    </h4>
+  {{/bs-modal-header}}
+
+  {{#bs-modal-body}}
+    {{#bs-form action=(action 'onSuccess') model=story}}
+      {{bs-form-element controlType='text' label='Title' property='title'}}
+    {{/bs-form}}
+  {{/bs-modal-body}}
+
+  {{#bs-modal-footer as |footer|}}
+    {{#if story.id}}
+      {{#bs-button action=(action 'onDanger') type='danger'}}Destroy{{/bs-button}}
+    {{/if}}
+    {{#bs-button action=(action 'onClose') type='default'}}Cancel{{/bs-button}}
+    {{#bs-button buttonType='submit' type='success'}}Save{{/bs-button}}
+  {{/bs-modal-footer}}
+{{/bs-modal}}

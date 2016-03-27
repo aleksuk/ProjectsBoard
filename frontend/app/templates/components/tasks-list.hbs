@@ -1,0 +1,24 @@
+{{#if tasks.length}}
+  <ul class="list-group">
+    {{#each tasks as |task|}}
+      {{#unless task.isNew}}
+        {{task-item project=project task=task onEdit=(action 'editTask')}}
+      {{/unless}}
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="list-unstyled">Tasks haven't created yet...</p>
+{{/if}}
+
+{{#link-to 'project.stories' story.project.id class='btn btn-default'}}Back{{/link-to}}
+<button {{action 'addTask'}} class="btn btn-default">Add task</button>
+
+{{task-modal
+  task=task
+  showModal=showTaskModal
+  onSuccess=(action 'saveTask')
+  onClose=(action 'onClose')
+  onDanger=(action 'destroyTask')
+}}
+
+{{notify-alert notify=notify visible=showAlertNotify}}

@@ -1,0 +1,7 @@
+{{#link-to 'project.story' story.project.id story.id}}
+  {{clean-prop story 'title' story.hasDirtyAttributes}}
+{{/link-to}}
+
+<div class="pull-right">
+  <a {{action 'editStory'}}>Edit</a>
+</div>

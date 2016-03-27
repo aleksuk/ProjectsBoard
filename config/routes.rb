@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # root 'ember#bootstrap'
   # get '/*path' => 'ember#bootstrap'
   mount_ember_app :frontend, to: '/'
-  resources :projects, default: { format: :json }
+
+  resources :projects, only: [:index, :show, :create, :update, :destroy]
+  resources :stories, only: [:index, :show, :create, :update, :destroy]
+  resources :tasks, only: [:index, :show, :create, :update, :destroy]
   # mount_ember_app :frontend, to: '/'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

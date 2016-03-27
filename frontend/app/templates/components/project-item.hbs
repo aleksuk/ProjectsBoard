@@ -1,5 +1,5 @@
-<li>
-  {{#link-to 'project' project.id}}{{project.name}}{{/link-to}}
-  <button {{action 'destroy'}}>Delete</button>
-</li>
-{{yield}}
+{{#link-to 'project.stories' project.id}}{{project.name}}{{/link-to}}
+
+<div class="pull-right">
+  {{#link-to 'edit-project' project.id}}Edit{{/link-to}}
+</div>

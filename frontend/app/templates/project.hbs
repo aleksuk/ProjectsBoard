@@ -1,2 +1,11 @@
-<h3>{{model.name}}</h3>
+{{#link-to 'projects'}}Projects{{/link-to}} /
+{{#link-to 'edit-project' model.id}}Edit{{/link-to}}
+
+<header>
+  <h3>
+    <small>Project: </small>
+    {{#link-to 'project.stories' model.id}}{{model.name}}{{/link-to}}
+  </h3>
+</header>
+
 {{outlet}}

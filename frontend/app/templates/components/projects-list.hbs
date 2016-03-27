@@ -1,11 +1,11 @@
-<section>
-  <h1>Projects</h1>
-
-  <ul>
+{{#if projects.length}}
+  <ul class="list-group">
     {{#each projects as |project|}}
       {{project-item project=project}}
     {{/each}}
   </ul>
-</section>
+{{else}}
+  <p>Projects haven't crated yet...</p>
+{{/if}}
 
-{{yield}}
+{{#link-to 'new-project' class="btn btn-default"}}Add Project{{/link-to}}

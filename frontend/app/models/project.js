@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  name: DS.attr()
+  name: DS.attr('string', { defaultValue: '' }),
+  stories: DS.hasMany('story', { async: true })
 });

@@ -1,0 +1,24 @@
+{{#if stories.length}}
+  <ul class="list-group">
+    {{#each stories as |story|}}
+      {{#unless story.isNew}}
+        {{story-item project=project story=story onEdit=(action 'editStory')}}
+      {{/unless}}
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="list-unstyled">Stories haven't created yet...</p>
+{{/if}}
+
+{{#link-to 'projects' class='btn btn-default'}}Back to projects{{/link-to}}
+<button {{action 'addStory'}} class="btn btn-default">Add user story</button>
+
+{{story-modal
+  story=story
+  showModal=showStoryModal
+  onSuccess=(action 'saveStory')
+  onClose=(action 'onClose')
+  onDanger=(action 'destroyStory')
+}}
+
+{{notify-alert notify=notify visible=showAlertNotify}}
