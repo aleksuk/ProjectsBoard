@@ -1,11 +1,40 @@
 {{#link-to 'projects'}}Projects{{/link-to}} /
 {{#link-to 'edit-project' model.id}}Edit{{/link-to}}
 
-<header>
-  <h3>
-    <small>Project: </small>
-    {{#link-to 'project.stories' model.id}}{{model.name}}{{/link-to}}
-  </h3>
-</header>
+<section>
+  <header>
+    <h3>
+      <small>Project: </small>
+      {{#link-to 'project.stories' model.id}}{{model.name}}{{/link-to}}
+    </h3>
+  </header>
 
-{{outlet}}
+  <section>
+    <h4>
+      <small>Description: </small>
+    </h4>
+    <p class="description">{{model.description}}</p>
+  </section>
+
+  <section>
+    <h4>
+      <small>Attachments: </small>
+    </h4>
+
+    <ul>
+      {{#each model.attachments as |attachment|}}
+        <li>
+          {{#if attachment.name}}
+            <a href="{{attachment.link}}" target="_blank">{{attachment.name}}</a>
+          {{else}}
+            <a href="{{attachment.link}}" target="_blank">{{attachment.link}}</a>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+
+  {{outlet}}
+</section>
+
+

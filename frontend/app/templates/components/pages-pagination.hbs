@@ -1,0 +1,35 @@
+<ul class="pagination">
+  <li class="{{unless pages.prevPage 'disabled'}}">
+    {{#if pages.prevPage}}
+      {{#link-to 'projects' (query-params page=pages.prevPage) aria-label='Previous'}}&laquo;{{/link-to}}
+    {{else}}
+      <span aria-hidden="true">&laquo;</span>
+    {{/if}}
+  </li>
+
+  {{#each pagesList as |pageNumber|}}
+    {{#if pageNumber}}
+      <li>
+        {{#link-to 'projects' (query-params page=pageNumber) aria-label='page'}}
+          {{pageNumber}}
+          <span class="sr-only">(current)</span>
+        {{/link-to}}
+      </li>
+    {{else}}
+      <li class="active">
+        {{#link-to 'projects' (query-params page=pages.currentPage) aria-label='Current'}}
+          {{pages.currentPage}}
+          <span class="sr-only">(current)</span>
+        {{/link-to}}
+      </li>
+    {{/if}}
+  {{/each}}
+
+  <li class="{{unless pages.nextPage 'disabled'}}">
+    {{#if pages.nextPage}}
+      {{#link-to 'projects' (query-params page=pages.nextPage) aria-label='Next'}}&raquo;{{/link-to}}
+    {{else}}
+      <span aria-hidden="true">&raquo;</span>
+    {{/if}}
+  </li>
+</ul>

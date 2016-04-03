@@ -1,6 +1,10 @@
-<h3>
+<h4>
   <small>Story: </small>
-  {{model.title}}
-</h3>
+  {{model.story.title}}
+</h4>
 
-{{tasks-list story=model tasks=model.tasks}}
+{{tasks-list
+  project=model.project
+  story=model.story
+  tasks=model.story.tasks
+}}

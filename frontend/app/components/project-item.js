@@ -4,6 +4,6 @@ export default Ember.Component.extend({
 
   tagName: 'li',
 
-  classNames: 'list-group-item'
+  classNames: ['list-group-item', 'project-item']
 
 });

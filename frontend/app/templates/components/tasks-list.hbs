@@ -10,7 +10,7 @@
   <p class="list-unstyled">Tasks haven't created yet...</p>
 {{/if}}
 
-{{#link-to 'project.stories' story.project.id class='btn btn-default'}}Back{{/link-to}}
+{{#link-to 'project.stories' project.id class='btn btn-default'}}Back{{/link-to}}
 <button {{action 'addTask'}} class="btn btn-default">Add task</button>
 
 {{task-modal

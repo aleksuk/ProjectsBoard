@@ -1,0 +1,13 @@
+.attachment-item {
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $mercury;
+  }
+
+  &__label {
+    width: 100%;
+  }
+}

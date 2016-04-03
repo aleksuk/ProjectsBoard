@@ -1,0 +1,24 @@
+<ul class="list-unstyled">
+  {{#each attachments as |attachment|}}
+    {{attachment-item attachment=attachment onDelete=(action 'deleteAttachment')}}
+  {{/each}}
+</ul>
+
+<hr />
+
+<div class="form-group">
+  <label for="attachment-name">Attachment name:</label>
+  {{input value=attachmentName id='attachment-name' class='form-control' maxlength=120}}
+</div>
+
+<div class="form-group">
+    <label for="attachment-name">Attachment Link:</label>
+  {{input value=attachmentLink id='attachment-link' class='form-control' maxlength=120}}
+</div>
+
+<div class="form-group">
+  <button class="btn btn-default" {{action 'addAttachment'}}>
+      Add Attachment
+  </button>
+</div>
+{{yield}}

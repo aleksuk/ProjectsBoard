@@ -2,8 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  model() {
-    return this.store.findAll('project', { reload: true });
+  queryParams: {
+    page: {
+      refreshModel: true
+    }
+  },
+
+  model(params, transition) {
+    return this.store.query('project', { page: transition.queryParams.page || 1 });
   }
 
 });

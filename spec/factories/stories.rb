@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :story do
     title "MyString"
-    project nil
+    # project nil
   end
 end

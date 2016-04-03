@@ -8,7 +8,6 @@ export default Ember.Component.extend({
 
   actions: {
     editStory() {
-      //this.get('parentView').send('editStory', this.get('story'));
       this.sendAction('onEdit', this.get('story'));
     }
   }

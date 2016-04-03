@@ -13,7 +13,8 @@ export default Ember.Component.extend(Notify,{
 
       project.save()
         .then(
-          () => {
+          (project) => {
+            this.cleanOldAttachments(project);
             this.get('router').transitionTo('edit-project', project.id);
             this.showSuccessNotify('Success!', 'Project saved');
           },
@@ -41,6 +42,21 @@ export default Ember.Component.extend(Notify,{
       }
 
       this.navigateToProjects();
+    },
+
+    cancel() {
+      var project = this.get('project');
+      var attachments = project.get('attachments');
+
+      project.rollbackAttributes();
+      attachments.forEach((attachment) => {
+        if (attachment.get('id')) {
+          attachment.rollbackAttributes();
+        } else {
+          attachments.removeObject(attachment);
+          attachment.deleteRecord();
+        }
+      });
     }
   },
 
@@ -52,6 +68,14 @@ export default Ember.Component.extend(Notify,{
 
   navigateToProjects() {
     this.get('router').transitionTo('projects');
+  },
+
+  cleanOldAttachments(project) {
+    var newAttachments = project.get('attachments').filter((attachment) => {
+      return attachment.get('id');
+    });
+
+    project.set('attachments', newAttachments);
   }
 
 });

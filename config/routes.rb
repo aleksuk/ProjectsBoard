@@ -4,9 +4,21 @@ Rails.application.routes.draw do
   # get '/*path' => 'ember#bootstrap'
   mount_ember_app :frontend, to: '/'
 
-  resources :projects, only: [:index, :show, :create, :update, :destroy]
-  resources :stories, only: [:index, :show, :create, :update, :destroy]
-  resources :tasks, only: [:index, :show, :create, :update, :destroy]
+  namespace :api do
+    resources :projects, only: [:index, :show, :create, :update, :destroy] do
+      resources :stories, only: [:index]
+      resources :attachments, only: [:index]
+    end
+
+    resources :attachments, only: [:show, :create, :update, :destroy]
+
+    resources :stories, only: [:show, :create, :update, :destroy] do
+      resources :tasks, only: [:index]
+    end
+
+    resources :tasks, only: [:show, :create, :update, :destroy]
+  end
+
   # mount_ember_app :frontend, to: '/'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label class="attachment-item__label">
+    Name
+    {{input value=attachment.name class='form-control' maxlength=120}}
+  </label>
+</div>
+
+<div class="form-group">
+  <label class="attachment-item__label">
+    Link
+    {{input value=attachment.link class='form-control' maxlength=120}}
+  </label>
+</div>
+
+<button class="btn btn-danger" {{action 'deleteAttachment'}}>Delete</button>
+
+{{yield}}

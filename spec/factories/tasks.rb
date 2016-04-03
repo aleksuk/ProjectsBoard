@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :task do
     body "MyString"
-    story ""
+    # story nil
   end
 end

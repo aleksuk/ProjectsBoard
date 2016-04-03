@@ -9,13 +9,20 @@
 
     <div class="form-group">
       <label for="description">Project description:</label>
-      {{textarea id='description' class='form-control'}}
+      {{textarea value=project.description id='description' class='form-control'}}
     </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Attachments</legend>
+
+    {{project-attachments-editor project=project attachments=project.attachments}}
   </fieldset>
 
   <fieldset>
     <button {{action 'back'}} class="btn btn-default">Back</button>
     {{#if project.id}}
+      <button {{action 'cancel'}} class="btn btn-default">Revert changes</button>
       <button {{action 'destroy'}} class="btn btn-danger">Destroy project</button>
     {{/if}}
     <button {{action 'save'}} type="submit" class="btn btn-success">Save project</button>
